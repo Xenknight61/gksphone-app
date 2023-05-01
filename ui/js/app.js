@@ -6,3 +6,8 @@ document.getElementById("button").onclick = async () => {
         console.log(test);
     }
 };
+
+window.addEventListener('message', (event) => {
+    const e = event.data
+    console.log(JSON.stringify(e));
+})
