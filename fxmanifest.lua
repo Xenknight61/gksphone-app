@@ -5,6 +5,7 @@ title "GKSPHONE - APP Template"
 description "APP Template GKSPHONE"
 author "xenknight"
 
+ui_page 'ui/index.html'
 client_script "client/*.lua"
 
 files {
