@@ -4,12 +4,25 @@
         <meta charset="utf-8" />
         <title>GKSPHONE Custom App</title>
         <link rel="stylesheet" href="css/styles.css" />
+        
     </head>
     <body style="visibility: hidden;">
         <div class="phone">
                 <button id="button">Test Button</button>
+                <br>
+                <h3>Input</h3>
+                <input type="text" onfocus="inputFocused(false)" onblur="inputFocused(true)">
         </div>
 
         <script src="js/app.js" type="module"></script>
+        
+        <script>
+            
+
+            async function inputFocused(value) {
+                await NuiFetch("input", value);
+            }
+            
+        </script>
     </body>
 </html>

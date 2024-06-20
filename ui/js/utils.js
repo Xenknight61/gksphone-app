@@ -24,3 +24,5 @@ export const fetchNui = async (evName, data, mockData = null) => {
 
   return await rawResp.json();
 };
+
+window.NuiFetch = fetchNui;

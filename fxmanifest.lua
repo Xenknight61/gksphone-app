@@ -13,4 +13,3 @@ files {
     "ui/js/*.js",
     "ui/css/*.css"
 }
-

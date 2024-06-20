@@ -3,3 +3,8 @@ RegisterNUICallback('dataCheck', function(data, cb)
     SendNUIMessage({event = 'app', app = data.id})
     cb('ok')
 end)
+
+RegisterNUICallback('input', function(data, cb)
+    exports["gksphone"]:InputChange(data)
+    cb('ok')
+end)
