@@ -1,10 +1,10 @@
 RegisterNUICallback('dataCheck', function(data, cb)
-    print("LOG: ", json.encode(data))
+    print("LOG: dataCheck", json.encode(data))
     exports["gksphone"]:NuiSendMessage({event = 'app', app = data.id})
     cb('ok')
 end)
 
-RegisterNUICallback('input', function(data, cb)
-    exports["gksphone"]:InputChange(data.value)
+RegisterNUICallback('getInfo', function(data, cb)
+    print("LOG: getInfo")
     cb('ok')
 end)

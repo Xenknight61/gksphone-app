@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 const isDarkMode = ref(false)
 const number = ref('')
+const imageURL = ref('')
 var gksphoneFunctions = null
 
 onMounted(() => {
@@ -26,7 +27,9 @@ onMounted(() => {
       if (!event.data) return;
       const e = event.data
       console.log(e);
-      
+      if (e.type === 'emojiSelected') {
+        number.value += e.eventData
+      }
   });
 })
 
@@ -57,29 +60,51 @@ const ExampleVideoCall = () => {
   gksphoneFunctions.videoCall(number.value)
 }
 
-const InputBlur = async () => {
-  if (!window.invokeNative) return;
-
-  const data = {
-    value: true,
-  };
-
-  await fetchNui("input", data);
+const InputBlur = () => {
+  gksphoneFunctions.fetchNui("gksphone:focusphone", {focus: true})
 }
 
-const InputFocus = async () => {
-  if (!window.invokeNative) return;
+const InputFocus = () => {
+  gksphoneFunctions.fetchNui("gksphone:focusphone", {focus: false})
+}
 
-  const data = {
-    value: false,
-  };
+const OpenCamera = async () => {
+  var isPhoto = true
+  var isVideo = true
+  const photoLink = await gksphoneFunctions.CameraOpen(isPhoto, isVideo)
+  if (photoLink) {
+    imageURL.value = photoLink
+  }
+}
 
-  await fetchNui("input", data);
+const ImageViewer = () => {
+  if (!imageURL.value) return;
+  gksphoneFunctions.FullScreenImage(imageURL.value)
+}
+
+const OpenGallery = async () => {
+  var onlyVideo = false
+  var onlyPhoto = true
+  var multiSelect = false
+  var camera = true
+  const selectGallery = await gksphoneFunctions.GetGallery(onlyVideo, onlyPhoto, multiSelect, camera)  
+  if (selectGallery) {
+    if (selectGallery.opencamera) {
+      OpenCamera()
+    } else {
+      imageURL.value = selectGallery.data
+    }
+  }
+}
+
+const ExampleEmoji = () => {
+  gksphoneFunctions.SelectEmoji(true)
 }
 
 const fetchNui = async (evName, data, mockData = null) => {
   if (!window.invokeNative) return mockData;
-  const rawResp = await fetch(`https://gks-customapp/${evName}`, {
+  const fetchLink = window.gksphone?.url ? "https://"+window.gksphone.url : "https://vue";
+  const rawResp = await fetch(`${fetchLink}/${evName}`, {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF8",
@@ -105,10 +130,16 @@ const fetchNui = async (evName, data, mockData = null) => {
 
     </div>
 
-
+    <img v-if="imageURL !== ''" :src="imageURL" height="150" alt="" @click="ImageViewer()"/>
     <div>
       Dark mode: {{ isDarkMode }}
     </div>
+    <button @click="OpenCamera()">
+      Open Camera
+    </button>
+    <button @click="OpenGallery()">
+      Gallery poupup
+    </button>
     <button @click="ExampleLoadingPoup()">
       Loading popup
     </button>
@@ -122,6 +153,9 @@ const fetchNui = async (evName, data, mockData = null) => {
       Video call
     </button>
     <input type="text" placeholder="Number" v-model="number"  @blur="InputBlur()" @focus="InputFocus()"/>
+    <button @click="ExampleEmoji()">
+      Emoji
+    </button>
   </div>
 
 </template>
@@ -130,12 +164,12 @@ const fetchNui = async (evName, data, mockData = null) => {
 .app-container {
     width: 100%;
     height: 100%;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    color: var(--text-primary);
 }
 
 .app-header {

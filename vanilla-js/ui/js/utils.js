@@ -14,7 +14,7 @@ export const DEV_MODE = false;
 export const fetchNui = async (evName, data, mockData = null) => {
   if (isEnvBrowser()) return mockData;
 
-  const rawResp = await fetch(`https://gksphone-app/${evName}`, {
+  const rawResp = await fetch(`https://vanilla-js/${evName}`, {
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json; charset=UTF8",

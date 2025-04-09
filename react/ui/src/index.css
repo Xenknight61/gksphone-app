@@ -6,13 +6,26 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --text-primary: #000000;
+}
+
+.dark {
+  --text-primary: #f2f2f7;
 }
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 97vh;
+  padding: 0;
+  visibility: hidden;
 }
 
+::-webkit-scrollbar{ width :0.6vh; height: 0.6vh; }
+::-webkit-scrollbar-thumb {
+  background: rgba(88, 88, 88, 0.39);
+  border-radius: 1vh;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #bbbaba;
+}

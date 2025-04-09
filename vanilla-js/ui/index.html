@@ -6,23 +6,33 @@
         <link rel="stylesheet" href="css/styles.css" />
         
     </head>
-    <body style="visibility: hidden;">
-        <div class="phone">
-                <button id="button">Test Button</button>
-                <br>
-                <h3>Input</h3>
-                <input type="text" onfocus="inputFocused(false)" onblur="inputFocused(true)">
+    <body>
+        <div class="app-container">
+            <div class="app-header">
+                <h1>
+                    GKSPhone VanillaJS Example
+                </h1>
+
+                <p>
+                    This is an example of how to use GKSPhone functions in VanillaJS.
+                </p>
+            </div>
+
+            <img id="img" style="display: none;" src="" alt="">
+            <div>
+                Dark mode: <span id="isDarkMode">Off</span>
+            </div>
+            <button id="openCamera"> Open Camera </button>
+            <button id="OpenGallery"> Gallery poupup </button>
+            <button id="ExampleLoadingPoup">Loading popup </button>
+            <button id="ExampleNotify"> Notify </button>
+            <button id="ExampleCalling"> Calling </button>
+            <button id="ExampleVideoCall"> Video call </button>
+            <button id="ExampleEmoji"> Emoji </button>
+            <input type="text" placeholder="Number" id="number"/>
         </div>
 
         <script src="js/app.js" type="module"></script>
         
-        <script>
-            
-
-            async function inputFocused(value) {
-                await NuiFetch("input", value);
-            }
-            
-        </script>
     </body>
 </html>

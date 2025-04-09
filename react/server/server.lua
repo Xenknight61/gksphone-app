@@ -4,8 +4,8 @@ end
 
 CreateThread(function()
     local appData = {
-        name = "vue3CustomApp",
-        icons = "https://cfx-nui-gksphone/html/img/icons/qbit.png",
+        name = "reactCustomApp",
+        icons = "https://cfx-nui-gksphone/html/img/icons/appstore.png",
         categori = "mix",
         appurl = "https://cfx-nui-".. GetCurrentResourceName() .."/ui/dist/index.html",
         url = "/customapp",

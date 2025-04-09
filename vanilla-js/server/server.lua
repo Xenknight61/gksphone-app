@@ -4,10 +4,10 @@ end
 
 CreateThread(function()
     local appData = {
-        name = "vue3CustomApp",
+        name = "vanillaCustomApp",
         icons = "https://cfx-nui-gksphone/html/img/icons/appstore.png",
         categori = "mix",
-        appurl = "https://cfx-nui-".. GetCurrentResourceName() .."/ui/dist/index.html",
+        appurl = "https://cfx-nui-".. GetCurrentResourceName() .."/ui/index.html",
         url = "/customapp",
         blockedjobs = {},
         allowjob = {},
