@@ -13,10 +13,12 @@ html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     --text-primary: #000000;
+    --background-primary: #ffffff;
 }
 
 .dark {
     --text-primary: #f2f2f7;
+    --background-primary: #000000;
 }
 
 ::-webkit-scrollbar{ width :0.6vh; height: 0.6vh; }

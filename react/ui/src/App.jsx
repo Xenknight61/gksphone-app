@@ -6,6 +6,7 @@ function App() {
   const [isDarkMode, setMode] = useState(false);
   const [number, setNumber] = useState('');
   const [imageURL, setImageURL] = useState('');
+  const [backgroundPrimary, setBackgroundPrimary] = useState('');
 
   useEffect(() => {
     console.log('App mounted');
@@ -113,6 +114,10 @@ function App() {
     gksphoneFunctions.SelectEmoji(true)
   }
 
+  function changeBackgroundColor () {
+    gksphoneFunctions.setStatusBarColor(backgroundPrimary)
+  }
+
   async function fetchNui  (evName, data, mockData = null)  {
     if (!window.invokeNative) return mockData;
     const fetchLink = window.gksphone?.url ? "https://"+window.gksphone.url : "https://react";
@@ -165,6 +170,10 @@ function App() {
           <input type="text" placeholder="Number" onChange={handleChange} value={number}  onBlur={InputBlur} onFocus={InputFocus}/>
           <button onClick={ExampleEmoji}>
           Emoji
+          </button>
+          <input type="color" value={backgroundPrimary} onChange={(e) => setBackgroundPrimary(e.target.value)} />
+          <button onClick={changeBackgroundColor}>
+              Change Background Color
           </button>
         </div>
     </>

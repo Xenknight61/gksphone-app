@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 const isDarkMode = ref(false)
 const number = ref('')
 const imageURL = ref('')
+const backgroundColor = ref('')
 var gksphoneFunctions = null
 
 onMounted(() => {
@@ -101,6 +102,13 @@ const ExampleEmoji = () => {
   gksphoneFunctions.SelectEmoji(true)
 }
 
+const changeBackgroundColor = () => {
+  if (!backgroundColor.value) {
+    return
+  }
+  gksphoneFunctions.setStatusBarColor(backgroundColor.value)
+}
+
 const fetchNui = async (evName, data, mockData = null) => {
   if (!window.invokeNative) return mockData;
   const fetchLink = window.gksphone?.url ? "https://"+window.gksphone.url : "https://vue";
@@ -155,6 +163,10 @@ const fetchNui = async (evName, data, mockData = null) => {
     <input type="text" placeholder="Number" v-model="number"  @blur="InputBlur()" @focus="InputFocus()"/>
     <button @click="ExampleEmoji()">
       Emoji
+    </button>
+    <input type="text" placeholder="Background Color" v-model="backgroundColor"  @blur="InputBlur()" @focus="InputFocus()"/>
+    <button @click="changeBackgroundColor()">
+      Change Background Color
     </button>
   </div>
 

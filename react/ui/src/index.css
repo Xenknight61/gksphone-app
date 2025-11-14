@@ -7,10 +7,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --text-primary: #000000;
+  --background-primary: #ffffff;
 }
 
 .dark {
   --text-primary: #f2f2f7;
+  --background-primary: #000000;
 }
 
 body {

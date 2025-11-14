@@ -62,6 +62,10 @@ document.getElementById('OpenGallery').onclick = async () => {
     }
 }
 
+document.getElementById('ChangeBackgroundColor').onclick = () => {
+    gksphoneFunctions?.setStatusBarColor(document.getElementById('bgcolor').value)
+}
+
 document.getElementById('ExampleLoadingPoup').onclick = () => {
     console.log('Loading popup');
     
