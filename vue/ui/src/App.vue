@@ -182,6 +182,7 @@ const fetchNui = async (evName, data, mockData = null) => {
     justify-content: center;
     gap: 0.5rem;
     color: var(--text-primary);
+    margin-top: 50px;
 }
 
 .app-header {

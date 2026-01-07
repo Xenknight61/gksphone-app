@@ -41,6 +41,7 @@ html, body {
     justify-content: center;
     gap: 0.5rem;
     color: var(--text-primary);
+    margin-top: 50px;
 }
 
 .app-header {
